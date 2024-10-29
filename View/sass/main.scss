@@ -1,0 +1,14 @@
+$primary: #BC2626;
+$secondary: #E50303;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-theme-colors: (
+    "altlight1": #FFFFFF,
+    "altlight2": #F7F6F5
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
