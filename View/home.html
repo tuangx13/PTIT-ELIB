@@ -5,32 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>PTIT E-library</title>
 </head>
+<style>
+    .navbar-brand img {
+        width: auto;
+        height: 50px;
+    }
+
+    .logo {
+        width: auto;
+        height: 50px;
+    }
+
+    .navbar-brand {
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .nav-right-button {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+    }
+</style>
+
 
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-altlight2">
         <div class="container-fluid">
+            <img class="logo" src="/img/ptitelib.png" alt="ptit_elib">
             <nav class="navbar navbar-light bg-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img class="mx-1" src="/img/ptit.png" alt="ptit_logo" width="auto" height="50">
-                        <img class="ms-2" src="/img/iec.png" alt="iec_logo" width="auto" height="50">
-                        <img class="ms-5" src="/img/ptitelib.png" alt="ptit_elib" width="auto" height="50">
-                    </a>
-                </div>
+                <div class="container d-flex">
+                    <div class="container">
+                        <a class="navbar-brand d-none d-md-block" href="#">
+                            <img class="mx-1" src="/img/ptit.png" alt="ptit_logo">
+                            <img class="ms-2" src="/img/iec.png" alt="iec_logo">
+                        </a>
+                    </div>
             </nav>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="btn-group d-flex me-2" role="group" aria-label="login signup">
+            <div class="collapse navbar-collapse nav-right-button" id="navbarSupportedContent">
+                <button id="toggleMode" class="btn btn-light border-0 mx-2 nav-right-button" onclick="toggleMode()">
+                    <i class="bi bi-lightbulb-off text-secondary"></i>
+                </button>
+                <div class="btn-group" role="group" aria-label="login signup">
                     <button type="button" class="btn btn-outline-primary">Log in</button>
                     <button type="button" class="btn btn-outline-primary">Sign up</button>
                 </div>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -38,19 +68,51 @@
     <div class="row">
         <div class="col-md-2">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">Trang chủ</a>
-                <a href="#" class="list-group-item list-group-item-action">Tin tức</a>
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">Trang
+                    chủ</a>
                 <a href="#" class="list-group-item list-group-item-action">Thông tin cá nhân</a>
                 <a href="#" class="list-group-item list-group-item-action">Danh sách đã mượn</a>
                 <a href="#" class="list-group-item list-group-item-action">Đánh giá đã viết</a>
                 <a href="#" class="list-group-item list-group-item-action">Liên hệ</a>
             </div>
-        </div>
-        <div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"></script>
+        </div>
+        <div class="col-md">
+            <form class="d-flex m-5">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const button = document.getElementById('toggleMode');
+
+            // Toggle các lớp cho chế độ Light/Dark
+            body.classList.toggle('bg-dark');
+            body.classList.toggle('text-light');
+            body.classList.toggle('bg-light');
+            body.classList.toggle('text-dark');
+
+            // Cập nhật nút để phù hợp với chế độ hiện tại
+            if (body.classList.contains('bg-dark')) {
+                button.classList.remove('btn-dark');
+                button.classList.add('btn-light');
+                button.textContent = 'Light Mode';
+            } else {
+                button.classList.remove('btn-light');
+                button.classList.add('btn-dark');
+                button.textContent = 'Dark Mode';
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
